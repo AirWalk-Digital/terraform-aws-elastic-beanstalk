@@ -71,3 +71,5 @@ variable "additional_environment_variables" {
 variable "account_number" {}
 
 variable "queue_name" {}
+
+variable "solution_stack" {}

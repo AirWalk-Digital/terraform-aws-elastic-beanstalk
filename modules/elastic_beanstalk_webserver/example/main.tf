@@ -3,7 +3,7 @@ module "webservice" {
   env_name                         = "${var.env_name}"
   application_name                 = "${var.application_name}"
   version_label                    = "${var.version_label}"
-  env                              = "${var.env}"
+  solution_stack                   = "${var.solution_stack}"
   asg_instance_type                = "${var.asg_instance_type}"
   instance_profile                 = "${var.instance_profile}"
   security_group                   = ["${var.security_group}"]
@@ -15,8 +15,7 @@ module "webservice" {
   asg_capacity                     = "${var.asg_capacity}"
   asg_zones                        = "${var.asg_zones}"
   vpc_id                           = "${var.vpc_id}"
-  elb_scheme                       = "${var.elb_scheme}"
-  elb_subnets                      = "${var.elb_subnets}"
+  elb_subnets                      = ["${var.elb_subnets}"]
   ec2_subnets                      = ["${var.ec2_subnets}"]
   load_balancer_type               = "${var.load_balancer_type}"
   beanstalk_env_variable_keys      = "${var.beanstalk_env_variable_keys}"

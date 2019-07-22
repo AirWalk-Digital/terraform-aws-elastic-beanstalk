@@ -4,7 +4,7 @@ resource "aws_elastic_beanstalk_environment" "beanstalk" {
   description         = "${var.env_description}"
   tier                = "WebServer"
   version_label       = "${var.version_label}"
-  solution_stack_name = "${lookup(var.solution_stack, var.env)}"
+  solution_stack_name = "${var.solution_stack}"
   tags                = "${var.tags}"
   setting             = ["${var.additional_environment_variables}"]
 
@@ -69,12 +69,6 @@ resource "aws_elastic_beanstalk_environment" "beanstalk" {
   }
 
   setting {
-    namespace = "aws:ec2:vpc"
-    name      = "ELBScheme"
-    value     = "${var.elb_scheme}"
-  }
-
-  setting {
     namespace = "aws:elasticbeanstalk:environment"
     name      = "LoadBalancerType"
     value     = "${var.load_balancer_type}"
@@ -84,7 +78,7 @@ resource "aws_elastic_beanstalk_environment" "beanstalk" {
     namespace = "aws:ec2:vpc"
     name      = "ELBSubnets"
 
-    value = "${lookup(var.elb_subnets, "${var.elb_scheme}")}"
+    value = "${join(",", var.elb_subnets)}"
   }
 
   setting {

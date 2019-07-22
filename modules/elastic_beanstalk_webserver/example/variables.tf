@@ -2,7 +2,9 @@ variable "env_name" {
   default = ""
 }
 
-variable "env" {}
+variable "solution_stack" {
+  default = ""
+}
 
 variable "application_name" {
   default = ""
@@ -60,13 +62,9 @@ variable "vpc_id" {
   default = ""
 }
 
-variable "elb_scheme" {
-  default = ""
-}
-
 variable "elb_subnets" {
 default =
-    {}
+    []
 
 }
 

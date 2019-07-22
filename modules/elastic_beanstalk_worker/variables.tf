@@ -2,10 +2,6 @@ variable "AWS_REGION" {
   default = "eu-west-1"
 }
 
-variable "env" {
-  type = "string"
-}
-
 variable "account_number" {}
 
 #### Bucket name
@@ -23,15 +19,7 @@ variable "application_version" {}
 ## EB solution_stack
 
 variable "solution_stack" {
-  type = "map"
-  default = {
-    php           = "64bit Amazon Linux 2017.03 v2.5.0 running PHP 7.1"
-    docker        = "64bit Amazon Linux 2017.03 v2.7.4 running Docker 17.03.2-ce"
-    multi-docker  = "64bit Amazon Linux 2018.03 v2.11.0 running Multi-container Docker 18.03.1-ce (Generic)"
-    javatomcat    = "64bit Amazon Linux 2017.03 v2.6.5 running Tomcat 8 Java 8"
-    nodejs        = "64bit Amazon Linux 2017.03 v4.3.0 running Node.js"
-    rubypassenger = "64bit Amazon Linux 2017.09 v2.6.0 running Ruby 2.4 (Passenger Standalone)"
-  }
+  default = ""
 }
 
 ### EB option settings
@@ -70,8 +58,6 @@ variable "deployment_policy" {}
 variable "asg_zones" {
   default = ""
 }
-
-variable "elb_scheme" {}
 
 variable "elb_pub_subnet" {
   type = "list"

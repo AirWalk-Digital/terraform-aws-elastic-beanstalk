@@ -2,7 +2,7 @@
 resource "aws_elastic_beanstalk_environment" "beanstalk-worker" {
   name                = "${terraform.workspace}-${var.environment_name}"
   application         = "${var.application_name}"
-  solution_stack_name = "${lookup(var.solution_stack, var.env)}"
+  solution_stack_name = "${var.solution_stack}"
   version_label       = "${var.application_version}"
   tier                = "Worker"
   tags                = "${var.user_tags}"
@@ -97,12 +97,6 @@ resource "aws_elastic_beanstalk_environment" "beanstalk-worker" {
     namespace = "aws:ec2:vpc"
     name      = "ELBSubnets"
     value     = "${join(",", var.elb_pub_subnet)}"
-  }
-
-  setting {
-    namespace = "aws:ec2:vpc"
-    name      = "ELBScheme"
-    value     = "${var.elb_scheme}"
   }
 
   setting {

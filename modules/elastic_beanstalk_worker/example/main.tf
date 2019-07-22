@@ -2,8 +2,7 @@ module "worker"{
  source = "../"
   application_name = "${var.application_name}"
   environment_name = "${var.env_name}"
-  env = "javatomcat"
-  solution_stack = {javatomcat ="64bit Amazon Linux 2016.09 v2.5.2 running Tomcat 8 Java 8"}
+  solution_stack = "${var.solution_stack}"
   application_version = "${var.version_label}"
   asg_max = "1"
   asg_min = "1"
